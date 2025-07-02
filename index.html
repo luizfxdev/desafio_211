@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário Funcionando</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .form-container {
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      }
+      label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+      }
+      input {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      input[type='submit'] {
+        background-color: #4caf50;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+        padding: 12px;
+      }
+      input[type='submit']:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Formulário de Cadastro</h1>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const app = document.getElementById('app');
+
+        const container = document.createElement('div');
+        container.className = 'form-container';
+        app.appendChild(container);
+
+        const form = new Form('cadastroUsuario');
+
+        // Adicione um ID para cada input para associar aos labels
+        const nomeLabel = new Label('Nome completo:', 'nome');
+        const nomeInput = new Input('text', 'nome', 'Digite seu nome completo');
+        nomeInput.element.id = 'nome'; // Adiciona ID
+
+        const emailLabel = new Label('E-mail:', 'email');
+        const emailInput = new Input('email', 'email', 'seu@email.com');
+        emailInput.element.id = 'email';
+
+        const senhaLabel = new Label('Senha:', 'senha');
+        const senhaInput = new Input('password', 'senha', 'Crie uma senha segura');
+        senhaInput.element.id = 'senha';
+
+        const enviarBtn = new Input('submit', 'enviar', 'Finalizar Cadastro');
+
+        form.addChildren(nomeLabel, nomeInput, emailLabel, emailInput, senhaLabel, senhaInput, enviarBtn);
+
+        form.render(container);
+      });
+    </script>
+  </body>
+</html>
